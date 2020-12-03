@@ -1,0 +1,102 @@
+La api esta documentada con Swagger
+
+Para ver la documentacion y probar los servicios correr la aplicacion y
+entrar al siguiente link:http://localhost:8080/sucursales/swagger-ui.html
+
+Base de datos h2
+Para acceder a la consola de h2 entrar al link:http://localhost:8080/sucursales/h2/
+
+Breve descripcion de los endPoints:
+
+Alta de sucursales
+http://localhost:8080/sucursales/
+
+La sucursal se pasa por el body
+Ejemplo de una sucursal:
+
+{
+    "direccion":"Tortuguitas",
+    "latitud":-34.452138593957244,
+    "longitud":-58.72684065850388
+}
+
+
+Eliminar Sucursal
+http://localhost:8080/sucursales/eliminarSucursal/{id_sucursal}
+
+El id de la sucursal a eliminar se pasa por la url
+
+
+Traer una Sucursal por id
+http://localhost:8080/sucursales/{id_sucursal}
+El id de la sucursal a consultar se pasa por la url
+
+
+Modificar Sucursal
+http://localhost:8080/sucursales/
+Por el body se pasa la Sucursal con los datos modificados
+
+Un ejemplo seria el json que se uso para la creacion pero conociendo el id
+
+{
+	"idSucursal":{valor de la sucursal que esta guardada en la base de datos}
+    "direccion":"Tortuguitas",
+    "latitud":-34.452138593957244,
+    "longitud":-58.72684065850388
+}
+
+Traer todas las sucursales
+http://localhost:8080/sucursales/todasLasSucursales
+
+Su respuesta seria
+[
+{
+	"idSucursal":{valor de la sucursal que esta guardada en la base de datos}
+    "direccion":"Tortuguitas",
+    "latitud":-34.452138593957244,
+    "longitud":-58.72684065850388
+}
+]
+
+Busqueda de sucursal mas cercana
+
+
+--CORDENAS PARA BUSCAR SUCURSAL MAS CERCANA. Las coordenas son de Del Viso, como resultado tiene que dar la de tortuguitas
+
+-34.42658683584383, -58.77989424316492
+
+http://localhost:8080/sucursales/busquedaSucursal
+Query Params = -34.42658683584383
+Query Params = -58.77989424316492
+
+La url quedaria asi :http://localhost:8080/sucursales/busquedaSucursal?latitud=-34.42658683584383&longitud=-58.77989424316492
+
+Para hacer esta prueba previamente ademas de la sucursal del principio di de altas las siguientes sucursales
+
+{
+    "direccion":"San isidro",
+    "latitud":-34.5089352975458,
+    "longitud":-58.56652864685192
+}
+
+{
+    "direccion":"Gran Bourg",
+    "latitud":-34.485797225456615,
+    "longitud":-58.725692845007764
+}
+
+la llamada a este enpoint  que busca la sucursal mas cercana devolvera la sucursal de tortuguitas
+
+{
+	"idSucursal":{valor de la sucursal que esta guardada en la base de datos}
+    "direccion":"Tortuguitas",
+    "latitud":-34.452138593957244,
+    "longitud":-58.72684065850388
+} 
+
+
+
+
+
+
+
